@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Delete Item{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">Elimina Task</div>
+    <div class="card-body">
+        <form method="post" action="/delete_item">
+            <div class="form-group">
+                <label for="text">Nome Task</label>
+                <input type="text" class="form-control" id="text" name="text" required>
+            </div>
+            <button type="submit" class="btn btn-danger">Elimina</button>
+        </form>
+    </div>
+</div>
+{% if item %}
+<div class="card mt-3">
+    <div class="card-header">Dettagli Task eliminato</div>
+    <div class="card-body">
+        <p><strong>Nome Task:</strong> {{ item.text }}</p>
+        <p><strong>Stato:</strong> {{ "Yes" if item.is_done else "No" }}</p>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

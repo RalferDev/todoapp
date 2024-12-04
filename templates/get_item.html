@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block title %}Get Item{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">Ricerca Task</div>
+    <div class="card-body">
+        <form method="get" action="/get_item">
+            <div class="form-group">
+                <label for="item_text">Nome Task</label>
+                <input type="text" class="form-control" id="item_text" name="item_text" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Ricerca</button>
+        </form>
+    </div>
+</div>
+{% if item %}
+<div class="card mt-3">
+    <div class="card-header">Dettagli Task</div>
+    <div class="card-body">
+        <p><strong>Nome Task:</strong> {{ item.text }}</p>
+        <p><strong>Stato:</strong> {{ "Completato" if item.is_done else "Non Completato" }}</p>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

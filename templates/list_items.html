@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}List Items{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">Lista Task</div>
+    <div class="card-body">
+        <form method="get" action="/items" class="form-inline">
+            <div class="form-group mb-2">
+                <label for="limit" class="mr-2">Quantità</label>
+                <input type="number" class="form-control" id="limit" name="limit" value="{{ limit }}" min="1">
+            </div>
+            <button type="submit" class="btn btn-primary mb-2">Aggiorna</button>
+        </form>
+        <table class="table table-striped mt-3">
+            <thead>
+                <tr>
+                    <th>Nome Task</th>
+                    <th>Stato</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in items %}
+                <tr>
+                    <td>{{ item.text }}</td>
+                    <td>{{ "Completato" if item.is_done else "Non Completato" }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

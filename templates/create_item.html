@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Create Item{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">Crea Task</div>
+    <div class="card-body">
+        <form method="post" action="/create_item">
+            <div class="form-group">
+                <label for="text">Nome Task</label>
+                <input type="text" class="form-control" id="text" name="text" required>
+            </div>
+            <div class="form-group">
+                <label for="is_done">Stato</label>
+                <input type="checkbox" id="is_done" name="is_done">
+            </div>
+            <button type="submit" class="btn btn-primary">Crea Task</button>
+        </form>
+    </div>
+</div>
+{% if item %}
+<div class="card mt-3">
+    <div class="card-header">Dettagli Task Creato</div>
+    <div class="card-body">
+        <p><strong>Nome Task:</strong> {{ item.text }}</p>
+        <p><strong>Stato:</strong> {{ "Completato" if item.is_done else "Non Completato" }}</p>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

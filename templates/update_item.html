@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+
+{% block title %}Update Item{% endblock %}
+
+{% block content %}
+<div class="card">
+    <div class="card-header">Aggiorna Task</div>
+    <div class="card-body">
+        <form method="post" action="/update_item">
+            <div class="form-group">
+                <label for="text">Nome task</label>
+                <input type="text" class="form-control" id="text" name="text" required>
+            </div>
+            <div class="form-group">
+                <label for="is_done">Stato</label>
+                <input type="checkbox" id="is_done" name="is_done">
+            </div>
+            <button type="submit" class="btn btn-primary">Aggiorna task</button>
+        </form>
+    </div>
+</div>
+{% if item %}
+<div class="card mt-3">
+    <div class="card-header">Dettagli Task Aggionrato</div>
+    <div class="card-body">
+        <p><strong>Nome Task:</strong> {{ item.text }}</p>
+        <p><strong>Stato:</strong> {{ "Completato" if item.is_done else "Non completato" }}</p>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

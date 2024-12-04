@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootswatch/4.5.2/cerulean/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body { background: linear-gradient(135deg, #ffffff, #ffffff);
+           min-height: 100vh;
+           display: flex;
+           flex-direction: column;
+       }
+        .container {
+            flex: 1;
+            margin-top: 20px;
+       }
+        .navbar {
+            margin-bottom: 0;
+       }
+        .Btn {
+           display: flex;
+           align-items: center;
+           justify-content: flex-start;
+           width: 80px;
+           height: 80px;
+           border-radius: calc(60px/2);
+           border: none;
+           cursor: pointer;
+           position: fixed;
+           bottom: 60px;
+           right: 60px;
+           overflow: hidden;
+           transition-duration: .3s;
+           box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.4);
+           background-color: #007bff;
+       }
+
+       /* plus sign */
+       .sign {
+           width: 100%;
+           font-size: 2.2em;
+           color: white;
+           transition-duration: .3s;
+           display: flex;
+           align-items: center;
+           justify-content: center;
+       }
+       /* text */
+       .text {
+           position: absolute;
+           right: 0%;
+           width: 0%;
+           opacity: 0;
+           color: white;
+           font-size: 1.4em;
+           font-weight: 500;
+           transition-duration: .3s;
+       }
+       /* hover effect on button width */
+       .Btn:hover {
+           width: 125px;
+           transition-duration: .3s;
+       }
+
+       .Btn:hover .sign {
+           width: 30%;
+           transition-duration: .3s;
+           padding-left: 15px;
+       }
+       /* hover effect button's text */
+       .Btn:hover .text {
+           opacity: 1;
+           width: 70%;
+           transition-duration: .3s;
+           padding-right: 15px;
+       }
+       /* button click effect*/
+       .Btn:active {
+           transform: translate(2px ,2px);
+       }
+    </style>
+</head>
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+    <a class="navbar-brand" href="#">MyToDo</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a class="nav-link" href="/get"><i class="fas fa-search"></i> Ricerca</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/items"><i class="fas fa-list"></i> Lista Tasks</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/update"><i class="fas fa-edit"></i> Aggiorna task</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="/delete"><i class="fas fa-trash"></i> Elimina Task</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<div class="container mt-5">
+    {% block content %}{% endblock %}
+</div>
+<button class="Btn" onclick="location.href='/create'">
+    <div class="sign">+</div>
+    <div class="text"> Crea </div>
+</button>
+</body>
+</html>
