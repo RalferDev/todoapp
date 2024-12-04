@@ -11,6 +11,8 @@ import ItemService
 # comando da shell per avviare: uvicorn main:app --reload
 # per usare swagger usare http://127.0.0.1:8000/docs#/
 
+
+
 app = FastAPI()
 
 templates = Jinja2Templates(directory="templates")
